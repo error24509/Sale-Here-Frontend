@@ -11,15 +11,141 @@ body,
 
 .app {
   height: 100%;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url("./assets/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.app .logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  // object-fit: contain;
+
+}
+
+input {
+  height: 60px;
+  color: #4e4e4e;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  font-size: 34px;
+  text-align: center;
+  font-weight: 500;
+  font-family: "Prompt", sans-serif;
+  margin-bottom: 30px;
+}
+
+.hidden-btn {
+  visibility: 'hidden' !important;
+  display: none;
+  // display: hidden;
 }
 
 .container {
   width: 90%;
   height: 90vh;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 20px;
-  margin-top: 40px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 37px;
+  color: #383838;
+}
+
+.button {
+  color: #ffffff;
+  padding: 12px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+  // margin-top: 30px;
+  border: none;
+  font-family: "Prompt", sans-serif;
+  transition: all .2s ease-in-out;
+  background-image: radial-gradient(ellipse farthest-corner at top left, #c41417 0%, #b31315 100%);
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.button.join-btn {
+  text-align: center;
+  margin-top: 10px;
+  color: #383838;
+  background-image: radial-gradient(ellipse farthest-corner at top left, #ffff 0%, #ffff 100%);
+}
+
+.box-center .button.join-btn:hover {
+  color: #c41417;
+}
+
+.container-btn .button.join-btn {
+  margin-right: 20px;
+}
+
+.container-btn .button.join-btn:hover {
+  color: #c41417;
+
+}
+
+.box-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#btn-confirm {
+  position: relative;
+  animation: moveUp 500ms ease forwards;
+}
+
+@keyframes moveUp {
+  0% {
+    bottom: -40px;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 0;
+    opacity: 1;
+    /* Adjust this value to set the final position */
+  }
+}
+
+.btn {
+  font-size: 20px;
+  font-family: "Prompt", sans-serif;
+  margin-right: 50px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.checked-name {
+  font-size: 30px;
+  color: #383838;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.container-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
