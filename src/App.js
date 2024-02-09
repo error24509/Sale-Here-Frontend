@@ -1,79 +1,59 @@
 import React, { useState } from "react";
 import logo from "../src/assets/images/logo.png"
-import { useMorph } from 'react-morph';
 import PartSetName from "./components/PartSetName";
 import PartSelectCreateOrJoinRoom from "./components/PartSelectCreateOrJoinRoom";
 import PartInsertNameRoom from "./components/PartInsertNameRoom";
-// import PartSelectCreateOrJoinRoom from "./components/PartSelectCreateOrJoinRoom";
+import PartInsertJoinRoom from "./components/PartInsertJoinRoom";
+import ChatRoom from "./components/ChatRoom";
+import { ApolloProvider } from '@apollo/client';
+import { client } from "./api/baseApi";
 
 const App = () => {
-  const [name, setName] = useState("Golf")
+  const [name, setName] = useState("")
   const [step, setStep] = useState(1)
-  const [nameRoom, setNameRoom] = useState("")
-  const [toggle, setToggle] = useState(false)
+  const [dataRoom, setDataRoom] = useState({})
 
-
-  const morph = useMorph();
-
-  const handleNextStep = () => {
-    setStep(step + 1)
+  const handleStep = (data) => {
+    setStep(data)
   }
-
-  const handlePrevStep = () => {
-    setStep(step - 1)
-  }
-
 
   const showComponent = () => {
     switch (step) {
       case 1:
-        return <PartSetName name={name} setName={setName} onAction={handleNextStep} />
+        return <PartSetName name={name} setName={setName} onNext={handleStep} />
       case 2:
-        return <PartSelectCreateOrJoinRoom name={name} onNext={handleNextStep} onPrev={handlePrevStep} />
+        return <PartSelectCreateOrJoinRoom name={name} onNext={handleStep} onPrev={handleStep} />
       case 3:
-        return <PartInsertNameRoom nameRoom={nameRoom} setRoomName={setNameRoom} onNext={handleNextStep} onPrev={handlePrevStep} />
+        return <PartInsertNameRoom setDataRoom={setDataRoom} onNext={handleStep} onPrev={handleStep} />
+
+      case 4:
+        return <PartInsertJoinRoom setDataRoom={setDataRoom} onNext={handleStep} onPrev={handleStep} />
+
+      case 5:
+        return <div className="fullscreen">
+          <ChatRoom dataRoom={dataRoom} name={name} />
+        </div>
       default:
         break;
     }
   }
 
   return (
-    <div {...morph} className="app">
-      <img src={logo} alt="logo" className="logo" />
-      <div className="container">
-
-        {showComponent()}
-
-        {/* <div>
-          <h1 className="checked-name">คุณ {name}</h1>
-          <button className="button" onClick={() => { }}>สร้างห้องใหม่</button>
-          <p className="center-text">เข้าร่วมแชท</p>
-        </div> */}
-
-
-        {/* <div>
-          <h1 className="center-text">สร้างห้องใหม่</h1>
-          <input type="text" />
-          <div className="container-btn">
-            <p className="btn">กลับ</p>
-            <button className="button" onClick={() => { }}>ยืนยัน</button>
-          </div>
-        </div> */}
-
-        {/* <>
-          <button onClick={() => setToggle(!toggle)}>Let's morph!</button>
-          {toggle && <p {...morph}>Hello React Morph!</p>}
-          <br />
-          <br />
-          <br />
-          {!toggle && <h1 {...morph}>Hello React Morph!</h1>}
-        </> */}
-
-
+    <ApolloProvider client={client}>
+      <div className="app">
+        <img src={logo} alt="logo" className="logo" />
+        <div className="container">
+          <ApolloProvider client={client}>
+            {showComponent()}
+          </ApolloProvider>
+        </div>
       </div>
-    </div>
+    </ApolloProvider>
   )
 
 };
 
 export default App;
+
+
+

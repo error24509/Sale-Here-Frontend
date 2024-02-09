@@ -25,8 +25,6 @@ body,
   width: 200px;
   height: auto;
   margin-bottom: 20px;
-  // object-fit: contain;
-
 }
 
 input {
@@ -44,7 +42,6 @@ input {
 .hidden-btn {
   visibility: 'hidden' !important;
   display: none;
-  // display: hidden;
 }
 
 .container {
@@ -67,7 +64,6 @@ input {
   padding: 12px 30px;
   font-size: 20px;
   border-radius: 8px;
-  // margin-top: 30px;
   border: none;
   font-family: "Prompt", sans-serif;
   transition: all .2s ease-in-out;
@@ -120,7 +116,6 @@ input {
   100% {
     bottom: 0;
     opacity: 1;
-    /* Adjust this value to set the final position */
   }
 }
 
@@ -147,5 +142,202 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 10px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0px 30px;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.container-chat {
+  display: flex;
+  flex-direction: column;
+  min-height: 85%;
+  width: calc(100% - 20px);
+  border-radius: 10px;
+  height: auto;
+  position: relative;
+  background-color: #F6F6F6;
+  margin-bottom: 25px;
+}
+
+.fullscreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-chat {
+  bottom: 0;
+  width: calc(100% - 14px);
+  padding: 5px;
+  height: 100px;
+  color: #4e4e4e;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: start;
+  font-family: "Prompt", sans-serif;
+  margin-bottom: 0px;
+
+}
+
+.input-chat::placeholder {
+  color: #6E6E6E;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: end;
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+
+  font-family: "Prompt", sans-serif;
+}
+
+.chat-list {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: start;
+  padding: 10px;
+  height: auto;
+  width: 100%;
+  max-height: 80%;
+  border-radius: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.sequence-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.item:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.item:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.checked-name.item {
+  animation-delay: 0s;
+}
+
+.button.item {
+  animation-delay: 0.25s;
+}
+
+.join-btn.item {
+  animation-delay: 0.5s;
+}
+
+.box-chat {
+  opacity: 0;
+  height: auto;
+  display: flex;
+  margin: 10px;
+  padding-bottom: 0.5em;
+  transform: translateX(-100%);
+  overflow-y: auto;
+
+
+}
+
+.box-chat.user {
+  animation: moveOut 0.5s ease forwards;
+}
+
+.other-user {
+  animation: moveLeft 0.5s ease forwards;
+
+}
+
+
+@keyframes moveLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveOut {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.box-content {
+  background: #E9E9E9;
+  color: #000000;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  display: 'inline-block'
+
+}
+
+
+.text-user {
+  font-weight: 900;
+  font-size: 0.9em;
+  color: black;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
 }
